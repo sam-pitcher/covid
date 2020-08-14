@@ -13,7 +13,6 @@ headers = {
 response = requests.request("GET", url, headers=headers, params=querystring)
 
 results = json.loads(response.text)
-print(results)
 
 with open('countries.json', 'w') as json_file:
     json.dump(results, json_file)
