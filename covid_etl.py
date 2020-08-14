@@ -1,4 +1,5 @@
 import requests
+import json
 
 url = "https://covid-19-data.p.rapidapi.com/help/countries"
 
@@ -11,4 +12,8 @@ headers = {
 
 response = requests.request("GET", url, headers=headers, params=querystring)
 
-print(response.text)
+results = json.loads(response.text)
+print(results)
+
+with open('countries.json', 'w') as json_file:
+    json.dump(results, json_file)
